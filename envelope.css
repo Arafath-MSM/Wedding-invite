@@ -1,5 +1,5 @@
 [hidden]{display:none!important}
-body.envelope-closed{overflow:hidden}
+html.envelope-closed,body.envelope-closed{overflow:hidden;overscroll-behavior:none}
 .envelope-closed #wedding-page{visibility:hidden}
 .envelope-closed{scrollbar-width:none}
 .envelope-closed::-webkit-scrollbar{display:none}
@@ -70,11 +70,11 @@ body.envelope-closed{overflow:hidden}
 .reveal-confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:110}
 .reveal-confetti i{position:absolute;top:-20px;left:var(--x);width:9px;height:17px;border-radius:90% 0 90% 0;animation:celebration-fall var(--duration) var(--delay) ease-in both}
 .venue-photo{width:100%;height:auto;display:block;aspect-ratio:548/364;object-fit:contain;background:#e7dde9}
-@keyframes stationery-arrive{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
-@keyframes envelope-float{0%,100%{translate:0 0}50%{translate:0 -8px}}
-@keyframes shadow-breathe{50%{scale:.9;opacity:.65}}
-@keyframes seal-invitation{0%{scale:.95;opacity:.5}75%,100%{scale:1.35;opacity:0}}
-@keyframes aura-breathe{50%{scale:1.12;opacity:.6}}
+@keyframes stationery-arrive{from{opacity:0;transform:translate3d(0,16px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes envelope-float{0%,100%{transform:translate3d(0,0,0) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg))}50%{transform:translate3d(0,-12px,0) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg))}}
+@keyframes shadow-breathe{50%{transform:scale(.9);opacity:.65}}
+@keyframes seal-invitation{0%{transform:scale(.95);opacity:.5}75%,100%{transform:scale(1.35);opacity:0}}
+@keyframes aura-breathe{50%{transform:scale(1.12);opacity:.6}}
 @keyframes botanical-sway{0%,100%{transform:rotate(13deg)}50%{transform:rotate(17deg)}}
 @keyframes botanical-sway-top{0%,100%{transform:rotate(190deg)}50%{transform:rotate(185deg)}}
 @keyframes sparkle-drift{0%,100%{opacity:0;transform:translateY(8px) scale(.7)}45%{opacity:.6;transform:translateY(-10px) scale(1)}}
@@ -84,4 +84,4 @@ body.envelope-closed{overflow:hidden}
 @media(max-width:350px){.envelope-screen h2{font-size:33px}.envelope{height:210px}.envelope-letter{gap:5px}.letter-names{font-size:23px}.envelope-address{font-size:18px}.envelope-date{font-size:5px}.opening .envelope-letter{transform:translateY(-125px) rotate(-2deg)}}
 @media(max-height:680px){.envelope-screen{justify-content:flex-start;padding-top:37px}.envelope-screen h2{font-size:31px;margin:12px 0 36px}.envelope{height:190px;max-width:320px}.envelope-hint{margin-top:25px}.envelope-date{margin-top:12px}.letter-names{font-size:22px}.envelope-letter{gap:4px}.letter-star{font-size:16px}.letter-note{font-size:11px}.envelope-address{bottom:16px;font-size:18px}.envelope-address>span{margin-top:6px}.opening .envelope-letter{transform:translateY(-110px) rotate(-2deg)}}
 @media(max-height:680px){.opening .envelope{transform:translateY(10px)}}
-@media(prefers-reduced-motion:reduce){.envelope-screen,.envelope,.envelope-letter,.envelope-flap,.wax-seal,.silk-ribbon{transition:none}.envelope:hover,.opening .envelope,.opening .envelope-letter,.departing{transform:none}.reveal-confetti,.envelope-sparkles{display:none}.wax-seal:after{display:none}}
+@media(prefers-reduced-motion:reduce){html:not(.motion-requested) :is(.envelope-screen,.envelope,.envelope-letter,.envelope-flap,.wax-seal,.silk-ribbon){transition:none}html:not(.motion-requested) :is(.envelope:hover,.opening .envelope,.opening .envelope-letter,.departing){transform:none}html:not(.motion-requested) :is(.reveal-confetti,.envelope-sparkles){display:none}html:not(.motion-requested) .wax-seal:after{display:none}}

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#582b3d"><meta name="description" content="Together with our families, we invite you to celebrate the wedding of Mohamed Arafath and Fathima Hafsa on October 4, 2026.">
   <title>Arafath & Hafsa — A beautiful beginning</title>
-  <link rel="icon" href="assets/monogram.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="envelope.css"><link rel="stylesheet" href="theme.css">
+  <link rel="icon" href="assets/monogram.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=mobile-2"><link rel="stylesheet" href="envelope.css?v=mobile-2"><link rel="stylesheet" href="theme.css?v=mobile-2">
 </head>
 <body>
   <section class="envelope-screen" id="envelope-screen" aria-labelledby="envelope-title" hidden>
@@ -16,7 +16,7 @@
     <p class="eyebrow envelope-kicker">A LITTLE ENVELOPE. A LIFETIME OF LOVE.</p>
     <h2 id="envelope-title">A beautiful beginning,<br><em>sealed with love.</em></h2>
     <div class="envelope-stage">
-    <button class="envelope" id="open-envelope" aria-label="Open Mohamed Arafath and Fathima Hafsa’s wedding invitation">
+    <button class="envelope" id="open-envelope" aria-label="Open your surprise wedding invitation">
       <span class="envelope-back"></span>
       <span class="envelope-letter"><span class="letter-star" aria-hidden="true">✧</span><span class="eyebrow">OUR FOREVER BEGINS WITH YOU</span><span class="letter-names">Mohamed Arafath<br><i>&</i><br>Fathima Hafsa</span><span class="letter-note">And you’re a part of our story.</span><span class="eyebrow">04 OCTOBER 2026</span></span>
       <span class="envelope-pocket"></span><span class="envelope-flap"></span>
@@ -28,7 +28,7 @@
     <span class="envelope-ground-shadow" aria-hidden="true"></span>
     </div>
     <p class="envelope-hint" id="envelope-hint" role="status"><button class="envelope-open-prompt" type="button"><strong>Tap the envelope to open your invitation</strong><small>A little surprise awaits inside ✧</small></button></p>
-    <p class="envelope-date">MOHAMED ARAFATH & FATHIMA HAFSA <span>·</span> 04.10.2026</p>
+    <button class="motion-choice" id="play-envelope-animation" type="button" hidden>Play opening animation ✧</button>
   </section>
   <div id="wedding-page">
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -51,6 +51,6 @@
     <section class="blessing section-pad" id="blessing"><img src="assets/florals.svg" alt="" aria-hidden="true"><div class="blessing-content reveal"><p class="eyebrow">03 / A LITTLE PRAYER</p><span class="blessing-star" aria-hidden="true">✧</span><h2>“May Allah bless you,<br>shower His blessings upon you,<br>and unite you in <em>goodness.</em>”</h2><p>As we begin this journey, we ask for your heartfelt prayers<br>for a life filled with love, kindness, and faith.</p><div class="gold-rule"></div><p class="blessing-signoff">With love & grateful hearts,</p><p class="signature">Arafath & Hafsa</p></div></section>
     <section class="closing reveal"><p class="eyebrow">THE BEST PART OF OUR DAY?</p><h2>Sharing it <em>with you.</em></h2><p>We can’t wait to celebrate together.</p><button class="button button-plum" id="share-button">Share the invitation <span>↗</span></button><p class="share-status" id="share-status" role="status"></p></section>
   </main><footer><a href="#home" class="monogram">A<span>&</span>H</a><p>04 OCTOBER 2026 <span>✧</span> A BEAUTIFUL BEGINNING</p><button class="replay-envelope" id="replay-envelope" hidden>Replay the envelope ↺</button><a href="#home">Back to the top ↑</a></footer>
-  </div><div class="reveal-confetti" id="reveal-confetti" aria-hidden="true"></div><script src="script.js"></script>
+  </div><div class="reveal-confetti" id="reveal-confetti" aria-hidden="true"></div><script src="script.js?v=mobile-2"></script>
 </body>
 </html>

@@ -18,11 +18,11 @@ Run `npm start` (on PowerShell with restricted scripts, use `npm.cmd start`), th
 
 ## Features
 
-Textured envelope entrance with a silk ribbon, embossed gold seal, subtle sparkles, floating motion, and pointer tilt. Opening releases the ribbon, lifts the flap, raises a keepsake card, and reveals the page with celebratory petals. Guests open it with a click, tap, Enter, or Space; a footer button replays it. The page behind the envelope is inert until opened. Reduced-motion users receive an immediate reveal. Without JavaScript, the invitation remains readable.
+Textured envelope entrance with a silk ribbon, embossed gold seal, subtle sparkles, floating motion, and pointer tilt. Opening releases the ribbon, lifts the flap, raises a keepsake card, and reveals the page with celebratory petals. Guests open it with a click, tap, Enter, or Space; a footer button replays it. Names and the wedding date stay inside the envelope until opened. The page behind the envelope is hidden and inert until opened. Mobile layouts fill the visual viewport and follow browser-toolbar resizing, with safe-area padding. Motion uses standard transforms for wider mobile compatibility. Reduced-motion users receive an immediate reveal by default and can explicitly choose “Play opening animation.” Without JavaScript, the invitation remains readable.
 
 Animated SVG botanical artwork, floating petals, scroll reveals, live countdown, downloadable calendar event, exact venue map link, original invitation, native sharing with clipboard/download fallback, responsive layouts. Fonts load from Google Fonts, with local Georgia/Arial fallbacks; artwork is local.
 
-`node tests/browser-check.cjs` checks the entrance, reveal, replay, focus, names, Maps link, overflow at 1440/390/320px, reduced motion, and JavaScript exceptions. Requires the local server and Chrome installed at the Windows default path. It creates ignored preview screenshots and a temporary Chrome profile.
+`node tests/browser-check.cjs` checks the entrance, actual movement of the floating envelope and rising letter, reveal, replay, focus, names, photo, Maps link, viewport fit at 1440/375/390/320/430px, touch input, browser-toolbar resizing, reduced motion and explicit animation opt-in, and JavaScript exceptions. Requires the local server and Chrome installed at the Windows default path. Mobile checks emulate touch and viewport sizes; they do not substitute for testing on physical iPhones. It creates ignored preview screenshots and a temporary Chrome profile.
 
 ## GitHub Pages
 

@@ -11,14 +11,29 @@ const envelopeScreen = document.getElementById('envelope-screen');
 const weddingPage = document.getElementById('wedding-page');
 const openEnvelopeButton = document.getElementById('open-envelope');
 const replayEnvelope = document.getElementById('replay-envelope');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const playAnimationButton = document.getElementById('play-envelope-animation');
+const reduceMotion = () => motionPreference.matches && !document.documentElement.classList.contains('motion-requested');
 let openingEnvelope = false;
+function fitEnvelopeToScreen() {
+  // visualViewport follows browser toolbars on mobile, including older Safari.
+  if (window.visualViewport && window.visualViewport.scale !== 1) return;
+  envelopeScreen.style.setProperty('--envelope-height', `${window.visualViewport?.height || window.innerHeight}px`);
+}
+fitEnvelopeToScreen();
+window.addEventListener('resize', fitEnvelopeToScreen, { passive: true });
+window.visualViewport?.addEventListener('resize', fitEnvelopeToScreen, { passive: true });
 function showEnvelope() {
   openingEnvelope = false;
   envelopeScreen.classList.remove('opening', 'departing');
   openEnvelopeButton.disabled = false;
   envelopeScreen.hidden = false;
+  weddingPage.hidden = true;
   weddingPage.inert = true;
   document.body.classList.add('envelope-closed');
+  document.documentElement.classList.add('envelope-closed');
+  playAnimationButton.hidden = !reduceMotion();
+  fitEnvelopeToScreen();
   openEnvelopeButton.style.removeProperty('--tilt-x');
   openEnvelopeButton.style.removeProperty('--tilt-y');
   const action = window.matchMedia('(hover: hover) and (pointer: fine)').matches ? 'Click' : 'Tap';
@@ -26,7 +41,7 @@ function showEnvelope() {
   openEnvelopeButton.focus({ preventScroll: true });
 }
 function celebrateReveal() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (reduceMotion()) return;
   const container = document.getElementById('reveal-confetti');
   container.replaceChildren();
   for (let i = 0; i < 42; i++) {
@@ -45,12 +60,15 @@ openEnvelopeButton.addEventListener('click', () => {
   openingEnvelope = true;
   openEnvelopeButton.disabled = true;
   envelopeScreen.classList.add('opening');
+  playAnimationButton.hidden = true;
   document.getElementById('envelope-hint').textContent = 'With love, we invite you…';
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = reduceMotion();
   setTimeout(() => {
     envelopeScreen.classList.add('departing');
+    weddingPage.hidden = false;
     weddingPage.inert = false;
     document.body.classList.remove('envelope-closed');
+    document.documentElement.classList.remove('envelope-closed');
     const target = document.getElementById(location.hash.slice(1)) || document.getElementById('home');
     target.scrollIntoView({ behavior: 'instant' });
     celebrateReveal();
@@ -64,13 +82,20 @@ openEnvelopeButton.addEventListener('click', () => {
   }, reducedMotion ? 0 : 2900);
 });
 replayEnvelope.addEventListener('click', showEnvelope);
+playAnimationButton.addEventListener('click', () => {
+  document.documentElement.classList.add('motion-requested');
+  // Allow the browser to apply motion styles before starting the opening.
+  requestAnimationFrame(() => requestAnimationFrame(() => openEnvelopeButton.click()));
+});
+motionPreference.addEventListener('change', () => {
+  if (!openingEnvelope) playAnimationButton.hidden = !reduceMotion();
+});
 document.getElementById('envelope-hint').addEventListener('click', event => {
   if (event.target.closest('.envelope-open-prompt')) openEnvelopeButton.click();
 });
 // Bounded pointer tilt adds depth without moving the target on touch devices.
-const envelopeMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 openEnvelopeButton.addEventListener('pointermove', event => {
-  if (event.pointerType !== 'mouse' || openingEnvelope || envelopeMotion.matches) return;
+  if (event.pointerType !== 'mouse' || openingEnvelope || reduceMotion()) return;
   const bounds = openEnvelopeButton.getBoundingClientRect();
   openEnvelopeButton.style.setProperty('--tilt-x', `${(event.clientX - bounds.left - bounds.width / 2) / bounds.width * 7}deg`);
   openEnvelopeButton.style.setProperty('--tilt-y', `${-(event.clientY - bounds.top - bounds.height / 2) / bounds.height * 6}deg`);
