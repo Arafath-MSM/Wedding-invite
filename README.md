@@ -1,5 +1,7 @@
 # Arafath & Hafsa — Wedding invitation
 
+Live website: https://arafath-msm.github.io/Wedding-invite/
+
 A responsive English wedding website with warm ivory paper, burgundy stationery, champagne gold details, and sage-and-rose botanicals. Static HTML, CSS, and JavaScript; no build or installation required. `theme.css` contains the coordinated visual palette and readability refinements.
 
 ## Local preview
@@ -22,9 +24,11 @@ Animated SVG botanical artwork, floating petals, scroll reveals, live countdown,
 
 `node tests/browser-check.cjs` checks the entrance, reveal, replay, focus, names, Maps link, overflow at 1440/390/320px, reduced motion, and JavaScript exceptions. Requires the local server and Chrome installed at the Windows default path. It creates ignored preview screenshots and a temporary Chrome profile.
 
-## GitHub Pages (after local approval)
+## GitHub Pages
 
-Publish these static files from a GitHub repository root using Pages → Deploy from a branch → main / root. All asset links are relative to support project sites. No hosting or repository creation has been performed. `server.js` is only the local preview server.
+GitHub Pages publishes the repository root from `main`. Push changes to `main` to redeploy automatically. All asset links are relative to support the `/Wedding-invite/` project path. `.nojekyll` enables plain static publishing. `server.js` is only the local preview server.
+
+To run the browser checks against the deployed site, use `node tests/browser-check.cjs https://arafath-msm.github.io/Wedding-invite/`.
 
 ## Design references
 

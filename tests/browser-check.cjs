@@ -21,7 +21,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     await send('Runtime.enable'); await send('Page.enable');
     for (const width of [1440, 390, 320]) {
       await send('Emulation.setDeviceMetricsOverride', { width, height: width === 320 ? 568 : 900, deviceScaleFactor: 1, mobile: width < 700 });
-      await send('Page.navigate', { url: 'http://localhost:3000' });
+      await send('Page.navigate', { url: process.argv[2] || 'http://localhost:3000' });
       await pause(2200);
       assert.equal(await evaluate('document.getElementById("wedding-page").inert'), true);
       assert.equal(await evaluate('document.getElementById("envelope-screen").hidden'), false);
