@@ -1,4 +1,20 @@
 /* Ivory paper, burgundy ink, antique gold, and sage botanical details. */
+.icon{display:inline-block;width:18px;height:18px;flex:0 0 18px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.header-cta{display:inline-flex;align-items:center;gap:12px}
+.header-cta .icon{width:15px;height:15px;flex-basis:15px}
+.hero-bottom a{display:inline-flex;align-items:center;gap:9px}
+.hero-bottom .icon{width:14px;height:14px;flex-basis:14px}
+.replay-envelope,footer>a:last-child{display:inline-flex;align-items:center;gap:7px}
+footer .icon{width:15px;height:15px;flex-basis:15px}
+.event-time>.icon{width:25px;height:25px;flex-basis:25px;color:var(--gold)}
+.envelope-tap-cue{position:absolute;left:calc(50% - 15px);bottom:-40px;width:30px;height:34px;color:#a17b42;pointer-events:none;animation:tap-invitation 2.4s ease-in-out infinite;transition:opacity .2s}
+.envelope-tap-cue svg{display:block;width:100%;height:100%;overflow:visible}
+.tap-rays{animation:tap-rays 2.4s ease-in-out infinite}
+.envelope-open-prompt{animation:prompt-invitation 2.4s ease-in-out infinite}
+.opening .envelope-tap-cue{opacity:0;animation:none}
+@keyframes tap-invitation{0%,100%{transform:translateY(3px);opacity:.65}45%,60%{transform:translateY(-5px);opacity:1}}
+@keyframes tap-rays{0%,25%,100%{opacity:.2}45%,65%{opacity:1}}
+@keyframes prompt-invitation{0%,100%{box-shadow:0 0 0 0 #b9986426}55%{box-shadow:0 0 0 6px #b9986400}}
 .envelope-screen{bottom:auto;height:var(--envelope-height,100vh);height:var(--envelope-height,100dvh)}
 .motion-choice{position:relative;z-index:3;flex-shrink:0;background:none;color:var(--plum);border-bottom:1px solid var(--gold);padding:9px 4px;margin-top:14px;font-size:12px;min-height:44px}
 :root{--paper:#fbf8f0;--plum:#582b3d;--ink:#492c37;--muted:#77655f;--lavender:#efe2d9;--gold:#ac864c;--line:#dfd2bf;--rose:#936674;--sage:#7e8870}

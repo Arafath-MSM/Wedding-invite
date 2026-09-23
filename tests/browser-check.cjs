@@ -38,8 +38,10 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
         assert(await evaluate('visualViewport.height - document.querySelector(".envelope-open-prompt").getBoundingClientRect().bottom < 65'), 'No empty space below the prompt');
       }
       const beforeMotion = await evaluate('getComputedStyle(document.getElementById("open-envelope")).transform');
+      const beforeCue = await evaluate('getComputedStyle(document.querySelector(".envelope-tap-cue")).transform');
       await pause(350);
       assert.notEqual(await evaluate('getComputedStyle(document.getElementById("open-envelope")).transform'), beforeMotion, 'Floating animation visibly changes transform');
+      assert.notEqual(await evaluate('getComputedStyle(document.querySelector(".envelope-tap-cue")).transform'), beforeCue, 'Tap guidance is animated');
       if (width === 375) {
         await send('Emulation.setDeviceMetricsOverride', { width, height: 700, deviceScaleFactor: 1, mobile: true }); await pause(100);
         assert(await evaluate('Math.abs(document.getElementById("envelope-screen").getBoundingClientRect().height - 700) < 2'), 'Browser-toolbar resize handled');
@@ -65,6 +67,8 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
       await pause(2000);
       assert.equal(await evaluate('document.getElementById("envelope-screen").hidden'), true);
       assert.equal(await evaluate('document.getElementById("wedding-page").inert'), false);
+      assert.equal(await evaluate('document.querySelectorAll("#wedding-page svg.icon").length'), 10, 'Navigation uses consistent SVG icons');
+      assert.equal(await evaluate('/[↗↓↑↺]/.test(document.getElementById("wedding-page").textContent)'), false, 'No platform-dependent arrow characters');
       assert.equal(await evaluate('document.activeElement.id'), 'hero-title');
       assert(await evaluate('document.documentElement.scrollWidth <= innerWidth'), 'Opened page fits viewport');
       assert.equal(await evaluate('document.getElementById("directions-link").href'), 'https://maps.app.goo.gl/Lh6AbxdXu4Udp48Q9');
@@ -79,6 +83,7 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
     }
     await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });
     await pause(100);
+    assert.equal(await evaluate('getComputedStyle(document.querySelector(".envelope-tap-cue")).animationName'), 'none', 'Tap cue respects reduced motion');
     assert.equal(await evaluate('document.getElementById("play-envelope-animation").hidden'), false, 'Explicit animation option for reduced motion');
     await evaluate('document.querySelector(".envelope-open-prompt").click()'); await pause(100);
     assert.equal(await evaluate('document.getElementById("envelope-screen").hidden'), true);

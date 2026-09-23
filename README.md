@@ -18,6 +18,8 @@ Run `npm start` (on PowerShell with restricted scripts, use `npm.cmd start`), th
 
 ## Features
 
+An animated hand cue and a gentle pulse on the opening button guide guests to tap the envelope. Navigation uses inline SVG icons to keep arrow shapes consistent across iPhone, Android, and desktop fonts.
+
 Textured envelope entrance with a silk ribbon, embossed gold seal, subtle sparkles, floating motion, and pointer tilt. Opening releases the ribbon, lifts the flap, raises a keepsake card, and reveals the page with celebratory petals. Guests open it with a click, tap, Enter, or Space; a footer button replays it. Names and the wedding date stay inside the envelope until opened. The page behind the envelope is hidden and inert until opened. Mobile layouts fill the visual viewport and follow browser-toolbar resizing, with safe-area padding. Motion uses standard transforms for wider mobile compatibility. Reduced-motion users receive an immediate reveal by default and can explicitly choose “Play opening animation.” Without JavaScript, the invitation remains readable.
 
 Animated SVG botanical artwork, floating petals, scroll reveals, live countdown, downloadable calendar event, exact venue map link, original invitation, native sharing with clipboard/download fallback, responsive layouts. Fonts load from Google Fonts, with local Georgia/Arial fallbacks; artwork is local.
