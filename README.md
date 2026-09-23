@@ -1,0 +1,31 @@
+# Arafath & Hafsa — Wedding invitation
+
+A responsive English wedding website with warm ivory paper, burgundy stationery, champagne gold details, and sage-and-rose botanicals. Static HTML, CSS, and JavaScript; no build or installation required. `theme.css` contains the coordinated visual palette and readability refinements.
+
+## Local preview
+
+Run `npm start` (on PowerShell with restricted scripts, use `npm.cmd start`), then open http://localhost:3000. Run `npm.cmd run check` to check JavaScript syntax.
+
+## Before publishing
+
+- Confirmed names: Mohamed Arafath and Fathima Hafsa. The supplied Google Maps link is configured in both HTML and JavaScript.
+- The supplied hall photograph is `assets/Escall-hall-photo.jpeg`. The venue section displays the full photograph and its credits, with an illustration fallback if loading fails.
+- The invitation date is October 4, 2026 at 7 PM. Calendar and countdown use Sri Lanka time (UTC+05:30).
+- Edit wedding configuration in `script.js` and matching visible text and metadata in `index.html` if details change.
+- Review the original invitation image before publication: it includes family names and addresses.
+
+## Features
+
+Textured envelope entrance with a silk ribbon, embossed gold seal, subtle sparkles, floating motion, and pointer tilt. Opening releases the ribbon, lifts the flap, raises a keepsake card, and reveals the page with celebratory petals. Guests open it with a click, tap, Enter, or Space; a footer button replays it. The page behind the envelope is inert until opened. Reduced-motion users receive an immediate reveal. Without JavaScript, the invitation remains readable.
+
+Animated SVG botanical artwork, floating petals, scroll reveals, live countdown, downloadable calendar event, exact venue map link, original invitation, native sharing with clipboard/download fallback, responsive layouts. Fonts load from Google Fonts, with local Georgia/Arial fallbacks; artwork is local.
+
+`node tests/browser-check.cjs` checks the entrance, reveal, replay, focus, names, Maps link, overflow at 1440/390/320px, reduced motion, and JavaScript exceptions. Requires the local server and Chrome installed at the Windows default path. It creates ignored preview screenshots and a temporary Chrome profile.
+
+## GitHub Pages (after local approval)
+
+Publish these static files from a GitHub repository root using Pages → Deploy from a branch → main / root. All asset links are relative to support project sites. No hosting or repository creation has been performed. `server.js` is only the local preview server.
+
+## Design references
+
+The palette and stationery treatment were informed by [Digby & Rose’s ivory, burgundy, and gold invitation suite](https://www.digbyrose.com/2026/luxury-beveled-edge-letterpress-invitations-custom-die-cut-washington-dc-wedding-invitations/) and [Greenvelope’s layered digital invitations](https://www.greenvelope.com/wedding-invitations). Artwork and interaction code are local original work; no third-party design images or templates were copied.

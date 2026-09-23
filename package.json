@@ -1,0 +1,1 @@
+{"name":"arafath-hafsa-wedding","version":"1.0.0","private":true,"description":"A floral wedding invitation, made for the web","scripts":{"dev":"node server.js","start":"node server.js","check":"node --check script.js && node --check server.js"}}
